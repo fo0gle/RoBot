@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    background-color: #00070e;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.menu {
+    background-color: #000929;
+    height: 100px;
+    width: 600px;
+    margin-top: 40px;
+    border: 1px solid #00070e;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu-box {
+    background-color: #000e41;
+    height: 60px;
+    width: calc(20% - 20px);
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    padding-top: 10px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-decoration: none; /* Remove underline from links */
+}
+
+.menu-box img {
+    width: 30px; /* Smaller size */
+    height: 30px; /* Smaller size */
+    margin-top: 5px;
+}
+
+.menu-box img[src="svg/plugins.svg"] {
+    filter: invert(100%);
+}
+
+.menu-box.active {
+    background-color: #001871;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    color: white;
+}
+
+#accounts-container {
+    margin-top: 20px;
+    width: 80%;
+}
+
+.account-info {
+    background-color: #00092b;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.account-info p {
+    margin: 5px 0;
+}
+
+.account-info span {
+    font-weight: 700;
+}
+
+.iframe-container {
+    position: relative;
+    width: 90%; /* Wider */
+    height: 600px; /* Taller */
+    margin-bottom: 20px;
+}
+
+.iframe-container iframe {
+    width: 1000px;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+.iframe-container button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #001871;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-container {
+    width: 90%; /* Wider */
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Add margin to separate from iframe */
+}
+
+.input-container input {
+    width: 80%; /* Adjust width */
+    height: 60px; /* Taller */
+    padding: 10px;
+    border: 1px solid #000e41;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #00092b; /* Change background color */
+    color: white; /* Ensure text is visible */
+}
+
+.execute-button {
+    width: 20%; /* Adjust width */
+    height: 60px; /* Match input height */
+    margin-left: 10px;
+    padding: 10px;
+    background-color: #001871;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700; /* Make font bold */
+    cursor: pointer;
+}

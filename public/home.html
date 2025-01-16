@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Bot Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="menu">
+        <a href="home.html" class="menu-box active">
+            <img src="svg/home.svg" alt="Home">
+            Home
+        </a>
+        <a href="remote.html" class="menu-box">
+            <img src="svg/remote.svg" alt="Remote">
+            Remote
+        </a>
+        <a href="games.html" class="menu-box">
+            <img src="svg/games.svg" alt="Games">
+            Games
+        </a>
+        <a href="plugins.html" class="menu-box">
+            <img src="svg/plugins.svg" alt="Plugins">
+            Plugins
+        </a>
+        <a href="settings.html" class="menu-box">
+            <img src="svg/settings.svg" alt="Settings">
+            Settings
+        </a>
+    </div>
+    <div class="content">
+        <h1>Account Information</h1>
+        <div id="accounts-container">
+            <!-- Account information will be dynamically inserted here -->
+        </div>
+    </div>
+    <script>
+        const socket = new WebSocket('ws://localhost:3000');
+
+        socket.onmessage = function(event) {
+            const accounts = JSON.parse(event.data);
+            const container = document.getElementById('accounts-container');
+            container.innerHTML = ''; // Clear previous content
+
+            accounts.forEach(account => {
+                const accountDiv = document.createElement('div');
+                accountDiv.className = 'account-info';
+
+                const nameP = document.createElement('p');
+                nameP.innerHTML = `Account Name: <span>${account.name}</span>`;
+                accountDiv.appendChild(nameP);
+
+                const statusP = document.createElement('p');
+                statusP.innerHTML = `Status: <span>${account.status}</span>`;
+                accountDiv.appendChild(statusP);
+
+                const playingP = document.createElement('p');
+                playingP.innerHTML = `Playing: <span>${account.playing}</span>`;
+                accountDiv.appendChild(playingP);
+
+                container.appendChild(accountDiv);
+            });
+        };
+
+        socket.onerror = function(error) {
+            console.error('WebSocket error:', error);
+        };
+    </script>
+</body>
+</html>
