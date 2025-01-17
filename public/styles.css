@@ -139,3 +139,64 @@ body {
     font-weight: 700; /* Make font bold */
     cursor: pointer;
 }
+
+.game-box {
+    background-color: #00092b;
+    color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.game-box h2 {
+    margin-top: 0;
+}
+
+.game-box button {
+    background-color: #001871;
+    color: white; /* Change text color to white */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.game-box button:hover {
+    background-color: #dddddd;
+    color: #001871; /* Change text color on hover */
+}
+
+.account-box {
+    background-color: #00092b;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+#bloxfruit-data-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 3 columns per row */
+    gap: 10px;
+}
+
+.summary-bar {
+    display: flex;
+    justify-content: space-around;
+    background-color: #001871;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.summary-box {
+    background-color: #00092b;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+}

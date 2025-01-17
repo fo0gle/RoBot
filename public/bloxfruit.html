@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloxFruits Data</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="menu">
+        <a href="home.html" class="menu-box">
+            <img src="svg/home.svg" alt="Home">
+            Home
+        </a>
+        <a href="remote.html" class="menu-box">
+            <img src="svg/remote.svg" alt="Remote">
+            Remote
+        </a>
+        <a href="games.html" class="menu-box">
+            <img src="svg/games.svg" alt="Games">
+            Games
+        </a>
+        <a href="plugins.html" class="menu-box">
+            <img src="svg/plugins.svg" alt="Plugins">
+            Plugins
+        </a>
+        <a href="settings.html" class="menu-box">
+            <img src="svg/settings.svg" alt="Settings">
+            Settings
+        </a>
+    </div>
+    <div class="content">
+        <h1>BloxFruits</h1>
+        <div id="summary-bar" class="summary-bar">
+            <div class="summary-box">
+                <p>Total Money: <span id="total-money">0</span></p>
+            </div>
+            <div class="summary-box">
+                <p>Accounts Playing BloxFruits: <span id="playing-count">0</span></p>
+            </div>
+        </div>
+        <div id="bloxfruit-data-container">
+            <!-- Data will be displayed here -->
+        </div>
+    </div>
+    <script>
+        const socket = new WebSocket('ws://localhost:3000');
+
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            displayData(data);
+        };
+
+        function displayData(data) {
+            const container = document.getElementById('bloxfruit-data-container');
+            container.innerHTML = ''; // Clear existing content
+
+            let totalMoney = 0;
+            let playingCount = 0;
+
+            data.forEach(account => {
+                totalMoney += account.money;
+                if (account.playing === "BloxFruits") {
+                    playingCount++;
+                }
+
+                const accountDiv = document.createElement('div');
+                accountDiv.classList.add('account-box');
+                accountDiv.innerHTML = `
+                    <p>Account Name: ${account.accountName}</p>
+                    <p>Playing: ${account.playing}</p>
+                    <p>Level: ${account.level}</p>
+                    <p>Money: ${account.money}</p>
+                    <p>Status: ${account.status}</p>
+                `;
+                container.appendChild(accountDiv);
+            });
+
+            document.getElementById('total-money').textContent = totalMoney;
+            document.getElementById('playing-count').textContent = playingCount;
+        }
+
+        socket.onerror = function(error) {
+            console.error('WebSocket error:', error);
+        };
+    </script>
+</body>
+</html>

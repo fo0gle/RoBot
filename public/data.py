@@ -33,13 +33,9 @@ def get_profile_data(user_id):
     status_map = {0: 'Offline', 1: 'Online', 2: 'In Game', 3: 'In Studio'}
     status_text = status_map.get(status, 'Unknown')
     
-    # Extract game playing
-    game_playing = presence_data.get('lastLocation', 'Not playing')
-    
     return {
         "name": display_name,
-        "status": status_text,
-        "playing": game_playing
+        "status": status_text
     }
 
 # List to store profile data
@@ -59,4 +55,4 @@ print(f"Response text: {response.text}")
 
 # Print the profile data
 for profile in profiles:
-    print(f"Name: {profile['name']}, Status: {profile['status']}, Playing: {profile['playing']}")
+    print(f"Name: {profile['name']}, Status: {profile['status']}")
