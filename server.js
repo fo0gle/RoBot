@@ -30,21 +30,19 @@ wss.on('connection', (ws) => {
         console.log('Client disconnected');
     });
 
-    // Send initial data
-    ws.send(JSON.stringify(accounts));
-});
+    ws.on('message', (message) => {
+        const data = JSON.parse(message);
+        accounts.push(data);
+        console.log('Received data:', data);
 
-// Handle HTTP POST requests to update account data
-app.post('/update-accounts', (req, res) => {
-    accounts = req.body;
-    console.log('Received accounts:', accounts);
-
-    // Broadcast the updated data to all connected WebSocket clients
-    wss.clients.forEach((client) => {
-        if (client.readyState === WebSocket.OPEN) {
-            client.send(JSON.stringify(accounts));
-        }
+        // Broadcast the data to all connected clients
+        wss.clients.forEach(client => {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(JSON.stringify(accounts));
+            }
+        });
     });
 
-    res.sendStatus(200);
+    // Send initial data
+    ws.send(JSON.stringify(accounts));
 });
