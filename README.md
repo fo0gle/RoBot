@@ -12,3 +12,8 @@ As said earlier, it is an open-source Roblox account management platform which a
 
 - Roblox account tracker
 - Remote desktop viewer (It uses RustDesk)
+- Custom tracking lua script (used for getting values in games)
+- Plugin system
+- Settings
+- More to come
+
