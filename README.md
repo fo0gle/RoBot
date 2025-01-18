@@ -57,3 +57,96 @@ python public/ClipboardCopy.py
 ### Step 6: Run the Lua in game
 Run the games lua script and for best results clear you clipboard
 
+### Step 7: Wait
+just wait
+
+## How to make custom plugins 
+
+### Step 1: Create Plugin Directory
+Just make the directory
+
+### Step 2: Create Plugin Files
+
+Inside the plugins directory, create the following files:
+
+* plugin.html
+* plugin.css
+* plugin.js
+* myplugin.dat
+
+They can be named anything just make the dat file the same name as the folder family
+
+### Step 3: Sort out the dat file
+```sh
+My Plugin
+plugin.html
+```
+At the top is the name you would like your plugin to be called then the bottom is your plugins main html file
+
+### Step 4: Create files
+
+Create the files you would like to do but below is just a simple page
+
+Html:
+
+```sh
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Plugin</title>
+    <link rel="stylesheet" href="plugin.css">
+    <script src="plugin.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Plugin</h1>
+        <p>This is a custom plugin page.</p>
+        <button id="alertButton">Click Me</button>
+    </div>
+</body>
+</html>
+```
+
+Css:
+```sh
+.container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+h1 {
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+```
+
+JavaScript:
+```sh
+document.addEventListener('DOMContentLoaded', function() {
+    const alertButton = document.getElementById('alertButton');
+    alertButton.addEventListener('click', function() {
+        alert('Button clicked!');
+    });
+});
+```
+
+### Step 5: Install the plugin
+Install the plugin by putting it in the plugin folder in public 
+
+### Step 6: Start up the server to see if it works
