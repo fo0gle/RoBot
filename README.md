@@ -28,5 +28,5 @@ As said earlier, it is an open-source Roblox account management platform which a
 ### Step 1: Clone the Repository
 Clone your project repository to your local machine.
 ```sh
-git clone <your-repository-url>
+git clone <https://github.com/fo0gle/RoBot.git>
 cd RobloxBotSite
