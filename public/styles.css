@@ -36,12 +36,12 @@ body {
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    text-decoration: none; /* Remove underline from links */
+    text-decoration: none; 
 }
 
 .menu-box img {
-    width: 30px; /* Smaller size */
-    height: 30px; /* Smaller size */
+    width: 30px; 
+    height: 30px; 
     margin-top: 5px;
 }
 
@@ -84,8 +84,8 @@ body {
 
 .iframe-container {
     position: relative;
-    width: 90%; /* Wider */
-    height: 600px; /* Taller */
+    width: 90%; 
+    height: 600px; 
     margin-bottom: 20px;
 }
 
@@ -109,26 +109,26 @@ body {
 }
 
 .input-container {
-    width: 90%; /* Wider */
+    width: 90%; 
     display: flex;
     justify-content: center;
-    margin-top: 20px; /* Add margin to separate from iframe */
+    margin-top: 20px; 
 }
 
 .input-container input {
-    width: 80%; /* Adjust width */
-    height: 60px; /* Taller */
+    width: 80%; 
+    height: 60px; 
     padding: 10px;
     border: 1px solid #000e41;
     border-radius: 5px;
     font-size: 16px;
-    background-color: #00092b; /* Change background color */
-    color: white; /* Ensure text is visible */
+    background-color: #00092b; 
+    color: white; 
 }
 
 .execute-button {
-    width: 20%; /* Adjust width */
-    height: 60px; /* Match input height */
+    width: 20%; 
+    height: 60px; 
     margin-left: 10px;
     padding: 10px;
     background-color: #001871;
@@ -136,7 +136,7 @@ body {
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    font-weight: 700; /* Make font bold */
+    font-weight: 700; 
     cursor: pointer;
 }
 
@@ -146,6 +146,7 @@ body {
     padding: 20px;
     margin: 20px 0;
     border-radius: 8px;
+    border: 1px solid #ccc;
 }
 
 .game-box h2 {
@@ -154,7 +155,7 @@ body {
 
 .game-box button {
     background-color: #001871;
-    color: white; /* Change text color to white */
+    color: white; 
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
@@ -163,7 +164,7 @@ body {
 
 .game-box button:hover {
     background-color: #dddddd;
-    color: #001871; /* Change text color on hover */
+    color: #001871; 
 }
 
 .account-box {
@@ -177,7 +178,7 @@ body {
 
 #bloxfruit-data-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 3 columns per row */
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
 }
 
@@ -199,4 +200,30 @@ body {
     border-radius: 8px;
     border: 1px solid #ccc;
     text-align: center;
+}
+
+
+.plugin-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.plugin-box h2 {
+    margin: 0 0 10px 0;
+}
+
+.plugin-box button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.plugin-box button:hover {
+    background-color: #0056b3;
 }

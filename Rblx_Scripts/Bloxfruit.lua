@@ -22,5 +22,6 @@ while true do
     setclipboard(jsonData)
     print("Data has been copied to the clipboard.")
 
-    wait(10)  
+    local waitTime = math.random(1, 10)  -- Random wait time between 1 and 10 seconds
+    wait(waitTime)
 end

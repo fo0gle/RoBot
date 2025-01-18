@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BloxFruits Data</title>
+    <title>Pet Sim 99 Data</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -30,16 +30,16 @@
         </a>
     </div>
     <div class="content">
-        <h1>BloxFruits</h1>
+        <h1>Pet Sim 99</h1>
         <div id="summary-bar" class="summary-bar">
             <div class="summary-box">
-                <p>Total Money: <span id="total-money">0</span></p>
+                <p>Total Gems: <span id="total-gems">0</span></p>
             </div>
             <div class="summary-box">
-                <p>Accounts Playing BloxFruits: <span id="playing-count">0</span></p>
+                <p>Accounts Playing Pet Sim 99: <span id="playing-count">0</span></p>
             </div>
         </div>
-        <div id="bloxfruit-data-container">
+        <div id="petsim99-data-container">
             <!-- Data will be displayed here -->
         </div>
     </div>
@@ -59,16 +59,16 @@
                 if (accountsData[accountName]) {
                     // Update existing account data
                     accountsData[accountName].playing = account.playing;
-                    accountsData[accountName].level = parseInt(account.level, 10);
-                    accountsData[accountName].money = parseInt(account.money, 10);
+                    accountsData[accountName].rank = account.rank;
+                    accountsData[accountName].gems = parseInt(account.gems, 10);
                     accountsData[accountName].status = account.status;
                 } else {
                     // Add new account data
                     accountsData[accountName] = {
                         accountName: account.accountName,
                         playing: account.playing,
-                        level: parseInt(account.level, 10),
-                        money: parseInt(account.money, 10),
+                        rank: account.rank,
+                        gems: parseInt(account.gems, 10),
                         status: account.status
                     };
                 }
@@ -76,15 +76,15 @@
         }
 
         function displayData() {
-            const container = document.getElementById('bloxfruit-data-container');
+            const container = document.getElementById('petsim99-data-container');
             container.innerHTML = ''; // Clear existing content
 
-            let totalMoney = 0;
+            let totalGems = 0;
             let playingCount = 0;
 
             Object.values(accountsData).forEach(account => {
-                totalMoney += account.money;
-                if (account.playing === "BloxFruits") {
+                totalGems += account.gems;
+                if (account.playing === "PetSim99") {
                     playingCount++;
                 }
 
@@ -93,14 +93,14 @@
                 accountDiv.innerHTML = `
                     <p>Account Name: ${account.accountName}</p>
                     <p>Playing: ${account.playing}</p>
-                    <p>Level: ${account.level}</p>
-                    <p>Money: ${account.money}</p>
+                    <p>Rank: ${account.rank}</p>
+                    <p>Gems: ${account.gems}</p>
                     <p>Status: ${account.status}</p>
                 `;
                 container.appendChild(accountDiv);
             });
 
-            document.getElementById('total-money').textContent = totalMoney;
+            document.getElementById('total-gems').textContent = totalGems;
             document.getElementById('playing-count').textContent = playingCount;
         }
 
