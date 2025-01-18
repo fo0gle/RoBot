@@ -30,3 +30,30 @@ Clone your project repository to your local machine.
 ```sh
 git clone <https://github.com/fo0gle/RoBot.git>
 cd RobloxBotSite
+```
+
+### Step 2: Install Node.js Dependencies
+```sh
+npm install
+```
+
+### Step 3: Install Python Dependencies
+```sh
+pip install pyperclip websocket-client requests
+```
+
+### Step 4: Set Up and Run the Node.js Server
+```sh
+node server.js
+```
+
+The server will be running at http://localhost:3000
+
+### Step 5: Run the Python Scripts
+```sh
+python public/ClipboardCopy.py
+```
+
+### Step 6: Run the Lua in game
+Run the games lua script and for best results clear you clipboard
+
