@@ -49,7 +49,9 @@ node server.js
 
 The server will be running at http://localhost:3000
 
-### Step 5: Run the Python Scripts
+### Step 5: Run the Python Script
+
+Before you want to run it See line 11 and change the number to the number of accounts you have
 ```sh
 python public/ClipboardCopy.py
 ```
@@ -150,3 +152,9 @@ document.addEventListener('DOMContentLoaded', function() {
 Install the plugin by putting it in the plugin folder in public 
 
 ### Step 6: Start up the server to see if it works
+
+
+
+### Thanks for using this tool 
+
+For anyone who wants to know how the data gets through I am having to use the clipbord, the way it works in the scripts will send the data randomly from 1 to 10 seconds (can be changed) then the python script checks every second for json data on the clipboard. If anyone needs help please put it as I issue then I will help. If anyone wants to help out but some commits in :)
