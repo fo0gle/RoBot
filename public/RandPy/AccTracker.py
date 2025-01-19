@@ -1,3 +1,8 @@
+# THIS IS FOR TESTING PURPOSES ONLY IT IS NOT USEFUL
+
+
+
+
 import requests
 import json
 
@@ -5,8 +10,8 @@ url = "http://localhost:3000/update-accounts"
 
 # List of Roblox user IDs
 user_ids = [
-    "7870349870",
-    "1059089633",
+    "",
+    "1234567890",
     # Add more user IDs as needed
 ]
 

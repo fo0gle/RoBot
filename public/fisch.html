@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Sim 99 Data</title>
+    <title>Fisch Data</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -30,16 +30,16 @@
         </a>
     </div>
     <div class="content">
-        <h1>Pet Sim 99</h1>
+        <h1>Fisch</h1>
         <div id="summary-bar" class="summary-bar">
             <div class="summary-box">
-                <p>Total Gems: <span id="total-gems">0</span></p>
+                <p>Total Money: <span id="total-money">0</span></p>
             </div>
             <div class="summary-box">
-                <p>Accounts Playing Pet Sim 99: <span id="playing-count">0</span></p>
+                <p>Accounts Playing Fisch: <span id="playing-count">0</span></p>
             </div>
         </div>
-        <div id="petsim99-data-container">
+        <div id="fisch-data-container">
             <!-- Data will be displayed here -->
         </div>
     </div>
@@ -55,21 +55,21 @@
 
         function updateAccountsData(data) {
             data.forEach(account => {
-                if (account.playing === "PetSim99") {
+                if (account.playing === "Fisch") {
                     accountsData[account.accountName] = account;
                 }
             });
         }
 
         function displayData() {
-            const container = document.getElementById('petsim99-data-container');
+            const container = document.getElementById('fisch-data-container');
             container.innerHTML = ''; // Clear existing content
 
-            let totalGems = 0;
+            let totalMoney = 0;
             let playingCount = 0;
 
             Object.values(accountsData).forEach(account => {
-                totalGems += account.gems;
+                totalMoney += account.money;
                 playingCount++;
 
                 const accountDiv = document.createElement('div');
@@ -77,14 +77,14 @@
                 accountDiv.innerHTML = `
                     <p>Account Name: ${account.accountName}</p>
                     <p>Playing: ${account.playing}</p>
-                    <p>Rank: ${account.rank}</p>
-                    <p>Gems: ${account.gems}</p>
+                    <p>Level: ${account.level}</p>
+                    <p>Money: ${account.money}</p>
                     <p>Status: ${account.status}</p>
                 `;
                 container.appendChild(accountDiv);
             });
 
-            document.getElementById('total-gems').textContent = totalGems.toLocaleString();
+            document.getElementById('total-money').textContent = totalMoney.toLocaleString();
             document.getElementById('playing-count').textContent = playingCount;
         }
 

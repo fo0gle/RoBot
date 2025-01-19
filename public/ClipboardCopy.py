@@ -2,12 +2,17 @@ import json
 import pyperclip
 from collections import deque
 import websocket
+import re
 
 # Dictionary to store the previous state of each account
 previous_state = {}
 
 # Change the number of recent clipboards to store (amount of accounts to track)
 recent_clipboards = deque(maxlen=10)
+
+def clean_number(value):
+    """Remove non-numeric characters from a string."""
+    return int(re.sub(r'\D', '', str(value)))
 
 def on_open(ws):
     while True:
@@ -19,24 +24,48 @@ def on_open(ws):
                 if isinstance(data, list):  # Ensure the data is a list
                     for account in data:
                         account_name = account["accountName"]
-                        rank = int(account["rank"])
-                        gems = int(account["gems"])
-                        status = account["status"]
                         playing = account["playing"]
+                        status = account["status"]
+
+                        # Handle different game-specific fields
+                        if playing == "PetSim99":
+                            rank = clean_number(account["rank"])
+                            gems = clean_number(account["gems"])
+                            game_specific_data = {
+                                "rank": rank,
+                                "gems": gems
+                            }
+                        elif playing == "Fisch":
+                            level = clean_number(account["level"])
+                            money = clean_number(account["money"])
+                            game_specific_data = {
+                                "level": level,
+                                "money": money
+                            }
+                        elif playing == "BloxFruits":
+                            level = clean_number(account["level"])
+                            money = clean_number(account["money"])
+                            game_specific_data = {
+                                "level": level,
+                                "money": money
+                            }
+                        else:
+                            game_specific_data = {}
 
                         # Check if the account has changed
                         if (account_name not in previous_state or 
-                            previous_state[account_name]["rank"] != rank or 
-                            previous_state[account_name]["gems"] != gems or 
+                            previous_state[account_name].get("rank") != game_specific_data.get("rank") or 
+                            previous_state[account_name].get("gems") != game_specific_data.get("gems") or 
+                            previous_state[account_name].get("level") != game_specific_data.get("level") or 
+                            previous_state[account_name].get("money") != game_specific_data.get("money") or 
                             previous_state[account_name]["status"] != status or 
                             previous_state[account_name]["playing"] != playing):
                             
                             ws.send(json.dumps(account))
                             previous_state[account_name] = {
-                                "rank": rank, 
-                                "gems": gems, 
-                                "status": status, 
-                                "playing": playing
+                                "playing": playing,
+                                "status": status,
+                                **game_specific_data
                             }
                             print(f"Updated account: {account_name}")
                             print(f"Sent JSON: {json.dumps(account)}")
@@ -49,7 +78,7 @@ def on_message(ws, message):
 def on_error(ws, error):
     print(f"Error: {error}")
 
-def on_close(ws):
+def on_close(ws, close_status_code, close_msg):
     print("WebSocket closed")
 
 if __name__ == "__main__":

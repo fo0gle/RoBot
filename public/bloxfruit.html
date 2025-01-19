@@ -55,22 +55,8 @@
 
         function updateAccountsData(data) {
             data.forEach(account => {
-                const accountName = account.accountName;
-                if (accountsData[accountName]) {
-                    // Update existing account data
-                    accountsData[accountName].playing = account.playing;
-                    accountsData[accountName].level = parseInt(account.level, 10);
-                    accountsData[accountName].money = parseInt(account.money, 10);
-                    accountsData[accountName].status = account.status;
-                } else {
-                    // Add new account data
-                    accountsData[accountName] = {
-                        accountName: account.accountName,
-                        playing: account.playing,
-                        level: parseInt(account.level, 10),
-                        money: parseInt(account.money, 10),
-                        status: account.status
-                    };
+                if (account.playing === "BloxFruits") {
+                    accountsData[account.accountName] = account;
                 }
             });
         }
@@ -84,9 +70,7 @@
 
             Object.values(accountsData).forEach(account => {
                 totalMoney += account.money;
-                if (account.playing === "BloxFruits") {
-                    playingCount++;
-                }
+                playingCount++;
 
                 const accountDiv = document.createElement('div');
                 accountDiv.classList.add('account-box');
@@ -100,7 +84,7 @@
                 container.appendChild(accountDiv);
             });
 
-            document.getElementById('total-money').textContent = totalMoney;
+            document.getElementById('total-money').textContent = totalMoney.toLocaleString();
             document.getElementById('playing-count').textContent = playingCount;
         }
 
